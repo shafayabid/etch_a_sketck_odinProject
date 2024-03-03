@@ -5,7 +5,10 @@
 }
 
 .grid{
-    height: 500px;
-    width: 500px;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    width: 600px;
     border-style: solid;
+    box-sizing: border-box;
 }
