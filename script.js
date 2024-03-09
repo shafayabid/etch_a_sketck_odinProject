@@ -1,26 +1,46 @@
 
 const grid = document.querySelector(".grid");
 
-for (let i = 0; i < 10; i++) {
-    
-    const row = document.createElement("div");
-    row.style.display = "flex";
-    row.style.flex = 1;
+const button = document.querySelector(".btn");
 
-    for (let j = 0; j < 10; j++){
+let numOfBoxes = 10;
 
-        const box = document.createElement("div");
-        box.style.borderStyle = "solid";
-        box.style.flex = 1;
-        box.style.boxSizing = "border-box";
+generateBoxes();
 
-        box.addEventListener("mouseover", function (e) {
-            e.target.style.background = "black";
-          });
+button.addEventListener("click", () => {
+    numOfBoxes = parseInt(prompt("Please Enter The Number of Boxes in The Grid", 10));
+    generateBoxes();
+})
 
-        row.appendChild(box);
+
+function generateBoxes(){
+
+    while (grid.firstChild) {
+        grid.removeChild(grid.firstChild);
     }
 
-    grid.appendChild(row)
+    for (let i = 0; i < numOfBoxes; i++) {
 
+        const row = document.createElement("div");
+        row.style.display = "flex";
+        row.style.flex = 1;
+    
+        for (let j = 0; j < numOfBoxes; j++){
+    
+            const box = document.createElement("div");
+            // box.style.borderStyle = "solid";
+            box.style.flex = 1;
+            box.style.boxSizing = "border-box";
+    
+            box.addEventListener("mouseover", function (e) {
+                e.target.style.background = "black";
+              });
+    
+            row.appendChild(box);
+        }
+    
+        grid.appendChild(row)
+    
+    }
 }
+
